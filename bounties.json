@@ -1,0 +1,52 @@
+[
+  {
+    "id": "Make 3D models",
+    "price": "$9.00",
+    "text": "I need someone who could make me 2 3D models for a website that I'm making. Examples of those models are on this link: https://files.fm/u/ddaeshrfky\nI only need that cone and that surface to look the same.\nAcceptance Criteria\nI will accept anyone who can deliver this as quick as possible."
+  },
+  {
+    "id": "Testing bounties: prepare a single docker image for rocket-chat",
+    "price": "$63.00",
+    "text": "Currently installing and using rocket-chat (https://github.com/RocketChat/Rocket.Chat) with docker is through docker-compose and using two docker images (https://docs.rocket.chat/docs/deploy-with-docker-docker-compose), one for MongoDB and one for Rocket chat.\n\nI would need a single docker image and have it run in a Hugging Face Spaces:  https://huggingface.co/docs/hub/spaces-sdks-docker\n\nAcceptance Criteria\n\nProviding a single docker image tha run rocket-chat with local MongoDB all in one.\n\nSetting it up to run in a Hugging Face Spaces: https://huggingface.co/docs/hub/spaces-sdks-docker.\n\nTo deliver: create an account on HF (if needed) and upload the running Rocket-chat instance as a Spaces.\n\nTechnical Details\n\nShould be self-sufficient from above.\n\nLink to Project\n\nNo specific project yet, this is a simple side task to test a bit the replit bounties and play with spaces and rocket-chat as well."
+  },
+  {
+    "id": "App that convert your selfies to artworks. I have Flux Models ready.",
+    "price": "$4.50",
+    "text": "I have trained some styles in https://fal.ai/dashboard/apps , using flux lora.\nI have 4 styles for female avatars, 4 styles for male avatars. I have also tested them with face loras to see how they work and I have notes on how to combine style scale with the face lora scale to get the best results.\nNow I need someone to help me create an app where a person would upload his/her selfies and based on that generate artworks, using the art style models that I have worked on.\n\nIn steps I imagine the app like this:\n1- Choose Male of Female.\n\n2- Choose a style     A  B   C   D\n\n3- Upload 20-30 selfies\n\n4- ( the user just waits 15-20minutes )\nwe train the face and combine it with the style and prompt that we already have and generate 30 images.\nTo get the 30 avatars, I imagine it to be a different combination of style scale and avatar scale. ( for example 6 avatars : style scale 1.0 , face scale 1.2.    Another 6 avatars: style scale 1.0 , face scale 1.4 , and so on until we reach 30 images ).\n..."
+  },
+  {
+    "id": "Data Labeling of 550 F&B Package Images for Text Extraction",
+    "price": "$67.50",
+    "text": "We are seeking a meticulous data labeler to accurately annotate 550 food and beverage (F&B) package images. The primary goal is to extract and categorize text information from these images to enhance our Document AI processor's accuracy and reliability."
+  },
+  {
+    "id": "llmwip part5",
+    "price": "$4.50",
+    "text": "llmwip part5\n\nAcceptance Criteria\n-"
+  },
+  {
+    "id": "llmwip part4",
+    "price": "$4.50",
+    "text": "llmwip part4\n\nAcceptance Criteria\n-"
+  },
+  {
+    "id": "llmwip part3",
+    "price": "$4.50",
+    "text": "llmwip part3\n\nAcceptance Criteria\n-"
+  },
+  {
+    "id": "llmwip part2",
+    "price": "$4.50",
+    "text": "llmwip part2\n\nAcceptance Criteria\n-"
+  },
+  {
+    "id": "llmwip part1",
+    "price": "$4.50",
+    "text": "llmwip part1\n\nAcceptance Criteria\n-"
+  },
+  {
+    "id": "Interactive Customer Reviews Tool",
+    "price": "$90.00",
+    "text": "Willing to increase bounty amount based on scope\n\nProblem Description\nPurpose\nBuild a tool that helps clients pull insights from customer reviews to use in digital ads. The tool should identify themes/trends in reviews and allow for detailed sorting and filtering, so users can pull out specific details (useful for ad copy).\n\nGaps\nNeeds a user-friendly UI, optimized for scale.\nShould make it easy to add reviews from multiple sources.\nPrototype works, but not production-ready.\n\nAcceptance Criteria\nDashboard & Visualization: Fast, responsive sorting and filtering with a clean, dashboard-like interface.\nUser Experience: Dynamic filtering, summary views for quick insights, and detailed views for digging into individual reviews. We\u2019ll use a reference site for design alignment.\nProduction-Ready Requirements: Desktop-only, includes error handling, automated testing, and polished design.\n\nTechnical Details\nTech Stack: Open to suggestions. Currently using PostgreSQL and GoogleSheets. Just need a..."
+  }
+]
