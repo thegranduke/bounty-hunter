@@ -1,13 +1,13 @@
 [
   {
+    "id": "Setup API to download conversation from intercom to CSV",
+    "price": "$198.00",
+    "text": "We use intercom for managing support chats. We'd like to be able to download all of our conversation history for further analysis in various tools and with AI but this is only possible via the Intercom API: https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/detachtagfromconversation\n\nWe would like to setup a simple tool where we can pull conversations for a given date range and export them all with all avaialble metadata into a CSV. We can host the tool on reddit or if a different suggestion of way to run discuss that too.\n\nI can share our application key once accepted for access to the API\n\nAcceptance Criteria\nUser can select a date range\nUser can download intercom conversations into well formatted CSV with given date range. CSV should include all available columns in the API to use for further analysis and full conversation details."
+  },
+  {
     "id": "Make 3D models",
     "price": "$9.00",
     "text": "I need someone who could make me 2 3D models for a website that I'm making. Examples of those models are on this link: https://files.fm/u/ddaeshrfky\nI only need that cone and that surface to look the same.\nAcceptance Criteria\nI will accept anyone who can deliver this as quick as possible."
-  },
-  {
-    "id": "Testing bounties: prepare a single docker image for rocket-chat",
-    "price": "$63.00",
-    "text": "Currently installing and using rocket-chat (https://github.com/RocketChat/Rocket.Chat) with docker is through docker-compose and using two docker images (https://docs.rocket.chat/docs/deploy-with-docker-docker-compose), one for MongoDB and one for Rocket chat.\n\nI would need a single docker image and have it run in a Hugging Face Spaces:  https://huggingface.co/docs/hub/spaces-sdks-docker\n\nAcceptance Criteria\n\nProviding a single docker image tha run rocket-chat with local MongoDB all in one.\n\nSetting it up to run in a Hugging Face Spaces: https://huggingface.co/docs/hub/spaces-sdks-docker.\n\nTo deliver: create an account on HF (if needed) and upload the running Rocket-chat instance as a Spaces.\n\nTechnical Details\n\nShould be self-sufficient from above.\n\nLink to Project\n\nNo specific project yet, this is a simple side task to test a bit the replit bounties and play with spaces and rocket-chat as well."
   },
   {
     "id": "App that convert your selfies to artworks. I have Flux Models ready.",

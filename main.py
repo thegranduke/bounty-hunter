@@ -10,11 +10,11 @@ async def fetch_bounties():
     async with async_playwright() as p:
         # Launch browser with minimal arguments for compatibility
         browser = await p.chromium.launch(
-            headless=False,
+            headless=True,
             args=['--no-sandbox']
         )
         
-        context = await browser.new_context()
+        context = await browser.new_context( user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36')
         page = await context.new_page()
         
         url = 'https://replit.com/bounties?status=open&order=creationDateDescending'
@@ -105,11 +105,17 @@ async def main():
         # Report results
         if new_bounties:
             print(f"\nFound {len(new_bounties)} new bounties:")
-            for bounty in new_bounties:
-                print(f"- {bounty['id']}: {bounty['price']}")
+            number_of_bounties = len(new_bounties)
+            bounty = f"{number_of_bounties} \n- Latest bounty: {latest_bounty['id']}: {latest_bounty['price']} - \n{latest_bounty['text']}"
+            latest_bounty = new_bounties[0]
+            print(bounty)
+            # To print all new bounties
+            # for bounty in new_bounties:
+            #     print(f"- {bounty['id']}: {bounty['price']}")
             write_bounties_to_file(current_bounties)
         else:
             print("\nNo new bounties found")
+            bounty = "No new bounties found"
             
     except Exception as e:
         print(f"Error in main execution: {e}")
