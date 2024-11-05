@@ -3,6 +3,20 @@ import os
 import asyncio
 from playwright.async_api import async_playwright
 
+# Sending email
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+# Email configuration
+sender_email = os.getenv("SENDER_EMAIL")
+receiver_email = os.getenv("RECIPIENT_EMAIL")
+password = os.getenv("SENDER_PASSWORD")
+
+
 # File path for storing bounties
 LOCAL_FILE_PATH = './bounties.json'
 
@@ -104,11 +118,60 @@ async def main():
         
         # Report results
         if new_bounties:
-            print(f"\nFound {len(new_bounties)} new bounties:")
+            # print(f"\nFound {len(new_bounties)} new bounties:")
             number_of_bounties = len(new_bounties)
-            bounty = f"{number_of_bounties} \n- Latest bounty: {latest_bounty['id']}: {latest_bounty['price']} - \n{latest_bounty['text']}"
             latest_bounty = new_bounties[0]
-            print(bounty)
+            bounty = f"{number_of_bounties} new bounties \n- Latest bounty: {latest_bounty['id']}: {latest_bounty['price']} - \n{latest_bounty['text']}"
+            
+
+            # Send email with the latest bountly
+            try:
+                # Email content
+                subject = "Latest Bounty from Replit"
+                body = f"{ bounty }"
+
+                # Set up the MIME
+                message = MIMEMultipart()
+                message["From"] = sender_email
+                message["To"] = receiver_email
+                message["Subject"] = subject
+                message.attach(MIMEText(body, "plain"))
+                # Set up the SMTP server with extended timeout
+                server = smtplib.SMTP("smtp.mail.yahoo.com", 587, timeout=30)
+                
+                # Enable debug output
+                # server.set_debuglevel(1)
+                
+                # Identify ourselves to SMTP server
+                server.ehlo()
+                
+                # Secure the connection
+                server.starttls()
+                
+                # Re-identify ourselves over TLS connection
+                server.ehlo()
+                
+                # Login
+                server.login(sender_email, password)
+                
+                # Send email
+                server.sendmail(sender_email, receiver_email, message.as_string())
+                print("Email sent successfully!")
+                
+                # Close the connection
+                server.quit()
+
+            except smtplib.SMTPServerDisconnected as e:
+                print(f"Server disconnected unexpectedly: {e}")
+            except smtplib.SMTPAuthenticationError as e:
+                print(f"Authentication failed: {e}")
+            except smtplib.SMTPException as e:
+                print(f"SMTP error occurred: {e}")
+            except Exception as e:
+                print(f"Other error occurred: {e}")
+
+
+            # print(bounty)
             # To print all new bounties
             # for bounty in new_bounties:
             #     print(f"- {bounty['id']}: {bounty['price']}")

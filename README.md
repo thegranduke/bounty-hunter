@@ -1,96 +1,182 @@
-# Bounty Fetcher
-
-A Python script designed to fetch and track open bounties on Replit's bounty page. Leveraging Playwright for headless browsing, it identifies new bounties, saves them to a local file, and prints fresh opportunities directly to your console.
+# Bounty Hunter Docs
 
 ## Table of Contents
 
-- [Features](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
-- [Installation](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
-- [Usage](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
-- [Configuration](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
-- [Contributing](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
-- [License](https://www.notion.so/Readmes-134fd8aef4bd80fa96b9d1cc39a037fa?pvs=21)
+1. [Introduction](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+2. [Features](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+3. [Getting Started](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+4. [Configuration](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+5. [How It Works](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+    - [Key Functions](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+6. [Usage](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+7. [Email Notifications](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+8. [Error Handling](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
 
 ---
 
-### Features
+## Introduction
 
-- **Automated Bounty Fetching:** Scans the Replit bounties page and fetches details of available bounties.
-- **Data Persistence:** Stores bounty data in a local JSON file (`bounties.json`) for easy tracking and comparison.
-- **Efficient Tracking of New Bounties:** Compares newly fetched data with previously saved data and highlights any new bounties.
-- **Error Handling:** Captures and logs errors, with an optional screenshot for debugging.
+Welcome to the **Bounty Hunter**! This Python script is your friendly companion for tracking open bounties on Replit. With its asynchronous web scraping capabilities, it fetches bounty information and sends email notifications for the latest opportunities. Whether you’re a developer hunting for gigs or just love the thrill of the chase, this tool is designed to make your bounty hunting experience smooth and enjoyable.
 
----
+## Features
+
+- **Asynchronous Bounty Fetching**: Efficiently scrape bounty data using Playwright.
+- **Email Notifications**: Stay updated with the latest bounties delivered straight to your inbox.
+- **Data Storage**: Keeps track of previously fetched bounties for easy comparison.
+- **Error Handling**: Robust mechanisms to deal with common issues during execution.
+
+## Getting Started
+
+To set up the Bounty Hunter script, follow these simple steps:
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Python 3.7 or later
+- Pip (Python package installer)
+- Playwright
 
 ### Installation
 
-1. **Clone the Repository:**
+1. Clone the repository:
     
     ```bash
-    
-    git clone https://github.com/yourusername/bounty-fetcher.git
-    cd bounty-fetcher
+    git clone https://github.com/yourusername/bounty-hunter.git
+    cd bounty-hunter
     ```
     
-2. **Install Dependencies:**
-Ensure you have Python 3.7+ and install the required packages:
+2. Install the required packages:
     
     ```bash
     pip install -r requirements.txt
     ```
     
-3. **Install Playwright:**
+3. Set up your environment variables. Create a `.env` file in the project root with the following contents:
     
-    ```bash
-    playwright install
+    ```
+    env
+    SENDER_EMAIL=your_email@example.com
+    RECIPIENT_EMAIL=recipient_email@example.com
+    SENDER_PASSWORD=your_email_password
     ```
     
 
----
+## Configuration
 
-### Usage
+The script uses environment variables for configuration, which are loaded using the `dotenv` package. Ensure you update your `.env` file with your email credentials.
 
-1. **Run the Script:**
-Start the script to begin fetching open bounties:
+- **SENDER_EMAIL**: Your email address from which notifications will be sent.
+- **RECIPIENT_EMAIL**: The email address that will receive bounty notifications.
+- **SENDER_PASSWORD**: The password for your email account.
+
+### URL Configuration
+
+The URL from which bounties are fetched is hardcoded in the script:
+
+```python
+url = 'https://replit.com/bounties?status=open&order=creationDateDescending'
+```
+
+You can modify this URL to point to different bounty listings or other pages as needed.
+
+### Browser Configuration
+
+The browser is set to run in headless mode by default, meaning it will operate without a graphical user interface (GUI):
+
+```python
+browser = await p.chromium.launch(headless=True)
+```
+
+If you want to run the browser in a visible mode for debugging or development, change `headless=True` to `headless=False`.
+
+## How It Works
+
+The Bounty Hunter script is organized into several key functions, each responsible for a specific part of the bounty hunting process.
+
+### Key Functions
+
+1. **`fetch_bounties()`**:
+    - This asynchronous function is responsible for scraping bounty data from Replit. It launches a headless browser and navigates to the bounty listing page.
+    - After loading the page, it waits for the bounty elements to appear, then retrieves information about the bounties, such as their ID, price, and description.
+    - It processes the first 20 bounties found on the page and returns a list of dictionaries containing this information.
     
-    ```bash
-    python bounty_fetcher.py
+    ```python
+    async def fetch_bounties():
+        # Launch browser and fetch data
     ```
     
-2. **Outputs:**
-    - The console will print any new bounties found.
-    - The `bounties.json` file will update with the latest bounty data for easy tracking.
+2. **`read_bounties_from_file()`**:
+    - This function checks if a local file containing previously fetched bounties exists. If it does, it reads the JSON data and returns it as a Python list.
+    - If the file does not exist, it returns an empty list.
+    
+    ```python
+    def read_bounties_from_file():
+        # Read stored bounty data from local file
+    ```
+    
+3. **`write_bounties_to_file(bounty_data)`**:
+    - This function writes the current bounty data to a local JSON file for future reference. It formats the data nicely with indentation for readability.
+    
+    ```python
+    def write_bounties_to_file(bounty_data):
+        # Save bounty data to a local file
+    ```
+    
+
+1. **`main()`**:
+    - The entry point of the script. It orchestrates the overall flow: starting the bounty fetching process, comparing current bounties with previously stored ones, and sending email notifications for any new bounties found. The script is set to run continuously every 15 minutes, allowing it to check for new bounties automatically.
+    
+    ```python
+    async def main():
+        # Control the flow of the bounty hunting process
+    ```
+    
+- **Continuous Execution**:
+    - The script runs indefinitely, executing the main function every 15 minutes. This is done using a `while True` loop combined with `asyncio.run(main())`. If an exception occurs, it will print an error message and continue to the next cycle after sleeping for 15 minutes.
+    
+    ```python
+    if __name__ == "__main__":
+        while True:
+            try:
+                asyncio.run(main())
+            except Exception as e:
+                print(f"Error in main loop: {e}")
+            finally:
+                print("Sleeping for 15 minutes...")
+                time.sleep(900)
+    ```
+    
+
+## Usage
+
+Update the **Usage** section to indicate that the script now runs continuously:
+
+To run the script, simply execute:
+
+```bash
+python bounty_hunter.py
+```
+
+The script will automatically fetch the latest bounties, compare them with the stored data, and send an email if there are any new bounties found. The script is designed to run continuously, checking for new bounties every 15 minutes.
+
+## Email Notifications
+
+Email notifications are sent using the `smtplib` library. The script constructs an email with the details of the latest bounty and sends it to the specified recipient.
+
+### Note
+
+Make sure that your email provider allows SMTP access and check the specific settings (like server and port) required for sending emails.
+
+## Error Handling
+
+The Bounty Hunter script includes basic error handling to catch common issues, such as:
+
+- **Connection Errors**: If there are issues fetching data from the Replit website.
+- **Email Errors**: Problems related to sending emails, such as authentication failures or server disconnections.
+
+When an error occurs, the script prints a friendly message to help you diagnose the issue.
 
 ---
 
-### How It Works
-
-The main functionality of this script is defined across three key functions:
-
-1. **fetch_bounties():**
-    - Opens a headless Chromium browser, navigates to the Replit bounties page, and waits for the bounty elements to load.
-    - Fetches data from the first 20 bounty listings, capturing the bounty ID, price, and description.
-    - Returns a list of bounties as dictionaries.
-2. **read_bounties_from_file():**
-    - Reads previously saved bounties from `bounties.json`.
-    - Returns an empty list if no file exists.
-3. **write_bounties_to_file():**
-    - Writes the provided list of bounties to `bounties.json`.
-4. **main():**
-    - The primary function that orchestrates bounty fetching, comparing, and output.
-    - Displays any new bounties found and saves the latest data for future runs.
-
----
-
-### Configuration
-
-The script is designed to run in its default state without any additional configuration. However, you may customize these aspects:
-
-- **URL**: The script currently fetches data from `https://replit.com/bounties?status=open&order=creationDateDescending`. Change the URL inside `fetch_bounties()` if needed.
-- **Headless Mode**: By default, the browser runs headlessly (invisible). To view the scraping in real time, set `headless=False` in the `launch` method in `fetch_bounties()`.
-
----
-
-### Contributing
-
-Contributions are welcome! Please submit a pull request with any features or bug fixes. Make sure your code adheres to the existing style and includes relevant comments.
+With the Bounty Hunter, you’re now equipped to dive into the exciting world of bounties, let the hunt begin.

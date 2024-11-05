@@ -1,8 +1,8 @@
 [
   {
-    "id": "Setup API to download conversation from intercom to CSV",
-    "price": "$198.00",
-    "text": "We use intercom for managing support chats. We'd like to be able to download all of our conversation history for further analysis in various tools and with AI but this is only possible via the Intercom API: https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/detachtagfromconversation\n\nWe would like to setup a simple tool where we can pull conversations for a given date range and export them all with all avaialble metadata into a CSV. We can host the tool on reddit or if a different suggestion of way to run discuss that too.\n\nI can share our application key once accepted for access to the API\n\nAcceptance Criteria\nUser can select a date range\nUser can download intercom conversations into well formatted CSV with given date range. CSV should include all available columns in the API to use for further analysis and full conversation details."
+    "id": "Create a Shopify App for Custom Receipts",
+    "price": "$225.00",
+    "text": "A small niche of Shopify businesses need to create custom receipts for their customers that satisfy the needs of Insurance providers. Often Store Owners are forced to create these receipts manually. Store owners are in need of a plugin solution that creates receipts for this niche.\n\nAcceptance Criteria\nMust have demonstrated experience with Shopify App Development\nMust submit a Loom video outlining their past experience\nMust be open to long term setup for maintenance of app"
   },
   {
     "id": "Make 3D models",
