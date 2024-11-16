@@ -2,15 +2,15 @@
 
 ## Table of Contents
 
-1. [Introduction](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-2. [Features](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-3. [Getting Started](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-4. [Configuration](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-5. [How It Works](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-    - [Key Functions](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-6. [Usage](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-7. [Email Notifications](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
-8. [Error Handling](https://www.notion.so/Readme-135fd8aef4bd8010ade8c97a8eb2ac59?pvs=21)
+1. Introduction
+2. Features
+3. Getting Started
+4. Configuration
+5. How It Works
+    - Key Functions
+6. Usage
+7. Email Notifications
+8. Error Handling
 
 ---
 
@@ -179,4 +179,4 @@ When an error occurs, the script prints a friendly message to help you diagnose 
 
 ---
 
-With the Bounty Hunter, you’re now equipped to dive into the exciting world of bounties, let the hunt begin.
+With the Bounty Hunter, you can to dive into the world of bounties with ease, let the hunt begin.
