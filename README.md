@@ -1,4 +1,4 @@
-# Bounty Hunter Docs
+# Bounty Hunter
 
 ## Table of Contents
 
