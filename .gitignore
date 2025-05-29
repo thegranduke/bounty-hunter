@@ -4,3 +4,32 @@
 
 env/
 venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Local development
+*.env
+.env.local
+*.log
+
+# Scraper artifacts
+*.png
+page_content.html
+last_bounties.json
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
