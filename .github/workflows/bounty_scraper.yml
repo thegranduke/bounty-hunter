@@ -2,7 +2,7 @@ name: Replit Bounty Scraper
 
 on:
   schedule:
-   # - cron: '*/15 * * * *'  # Run every 15 minutes
+    - cron: '*/15 * * * *'  # Run every 15 minutes
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -27,12 +27,5 @@ jobs:
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: python scraper.py
-    
-    - name: Commit and push storage file
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add last_bounties.json || true
-        git commit -m "Update bounty storage" || true
-        git push || true
