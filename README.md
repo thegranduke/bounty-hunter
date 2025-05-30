@@ -22,7 +22,7 @@ An automated scraper that monitors Replit's bounty page and sends notifications 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/bounty-hunter.git
+git clone https://github.com/thegranduke/bounty-hunter.git
 cd bounty-hunter
 ```
 
